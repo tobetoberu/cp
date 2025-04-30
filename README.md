@@ -5,7 +5,7 @@
 
 
 ## Bài toán mở đầu
-Cho 1 đồ thị không chu trình có hướng, không trọng số, gồm $m$ cạnh và $n$ đỉnh (bạn có thể xem lại các khái niệm cơ bản về đồ thị tại [đây.](https://vi.wikipedia.org/wiki/Cây_(lý_thuyết_đồ_thị))
+Cho 1 đồ thị không chu trình có hướng, không trọng số, gồm $n$ đỉnh và $m$ cạnh (bạn có thể xem lại các khái niệm cơ bản về đồ thị tại [đây.](https://vi.wikipedia.org/wiki/Cây_(lý_thuyết_đồ_thị))
 
 Bá Phúc và Đức Mạnh quyết định chơi một trò chơi trên đồ thị này (sau khi bị thu máy). Cụ thể, trò chơi như sau: 
 - Đầu tiên, một đồng xu được đặt trên 1 đỉnh bất kì của đồ thị. 
