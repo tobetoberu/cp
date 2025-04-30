@@ -120,7 +120,7 @@ for(int i = 1; i <= n; i++){
  
 </details>
 
-Cách làm này có độ phức tạp là $O(nk)$, nhưng có thể tối ưu xuống $O(n)$ bằng cách tính trước $x = [f(n - 1) \land f(n - 2) \land ... f(n - max(n, k))]$. Nhận thấy $x = 1 \Longleftrightarrow f(n - 1) + f(n - 2) + ... + f(n - min(n, k)) = min(n - 1, k)$. Vậy ta có thể sử dụng biến $cur$ để kiểm soát tổng cộng dồn và tính cho $f(n)$.
+Cách làm này có độ phức tạp là $O(nk)$, nhưng ta có thể tối ưu xuống $O(n)$ bằng cách tính trước $x = [f(n - 1) \land f(n - 2) \land ... f(n - min(n, k))]$. Nhận thấy $x = 1 \Longleftrightarrow$ $$\sum_{m=max(0,n-k)}^{n-1} f(m)$$ $= min(n - 1, k)$. Vậy ta có thể sử dụng biến $cur$ để kiểm soát tổng cộng dồn và tính cho $f(n)$.
 <details>
 <summary>Code mẫu</summary>
 	
@@ -130,7 +130,7 @@ int f[n + 1], sum = 0;
 f[0] = 0;
 for(int i = 1; i <= n; i++){
 	int ok = 0;
-	if(sum == min(n - 1, k))ok = 1;
+	if(sum == min(i - 1, k))ok = 1;
 	f[i] = ok^1;
 	sum += f[i];
 	if(i >= k)sum -= f[i - k];
@@ -138,3 +138,6 @@ for(int i = 1; i <= n; i++){
 ```
  
 </details>
+
+Tuy nhiên, ta vẫn có thể cải tiến hơn nữa.
+Từ nhận xét $f(0) = 0$, $f(1) = f(2) = ... = f(k) = 1$, $f(k + 1) = 0$, $f(k + 2) = f(k + 3) = ... = f(2k + 1) = 1$, ... Có thể nhận thấy $f(n) = 0$ khi và chỉ khi $n$ chia hết cho $(k + 1)$. Vậy ta có thể xác định người thắng trong $O(1)$.
