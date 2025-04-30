@@ -65,13 +65,13 @@ void dfs(int u){
 	f[u] = 1;
 	for(int v : g[u]){
 		if(f[v] == -1)dfs(v);
-		f[u] =  min(f[u], f[v]);
+		f[u] = min(f[u], f[v]);
 	}
 	f[u] ^= 1;
 }
 signed main(){
 	fastio;
-	cin  >>  n  >>  m;
+	cin >> n >> m;
 	for(int i = 1; i <= m; i++){
 		int u, v; cin >> u >> v;
 		g[u].push_back(v); deg[u]++;
@@ -79,7 +79,7 @@ signed main(){
 	fill(f + 1, f + 1 + n, -1);
 	for(int i = 1; i <= n; i++)if(deg[i] == 0)f[i] = 0;
 	for(int i = 1; i <= n; i++)if(f[i] == -1)dfs(i);
-	cout  <<  accumulate(f + 1, f + 1 + n, 0);
+	cout << accumulate(f + 1, f + 1 + n, 0);
 }
 ```
 *Đây là một bài thuộc loại quy hoạch động trò chơi điển hình.*
