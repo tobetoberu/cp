@@ -85,5 +85,15 @@ signed main(){
 *Đây là một bài thuộc loại quy hoạch động trò chơi điển hình.*
 
 ## Lý thuyết trò chơi: Toán bất biến và trò chơi Nim
-Cả 2 dạng đều có chung đặc điểm: mọi trạng thái thua của một trò chơi đều có chung một tính chất toán học.
+Cả 2 dạng đều có chung đặc điểm: mọi trạng thái thua của một trò chơi đều có chung một tính chất toán học. Thực tế, Nim là lĩnh vực nâng cao và chuyên biệt hơn của toán bất biến, nên chúng ta sẽ bắt đầu với toán bất biến trước.
+
+### A. Toán bất biến
+
+#### Bài toán mở đầu
+Ngọc Minh và Thuận Hiếu, người Hải Ngôn, là một đôi bạn thân. Một hôm, đang đi daọ, họ "tình cờ" tìm được 1 cái ví, có $n$ đồng xu giống hệt nhau. 2 người quyết định chơi 1 trò chơi như sau:
+- Trò chơi diễn ra luân phiên theo luật, bắt đầu từ Ngọc Minh.
+- Mỗi lượt, người chơi sẽ bốc một nắm xu ra. Vì luyện tập cơ ngón tay, nên cả 2 đều có thể bốc lên tới $k$ viên sỏi.
+- Ai bốc hết xu được trước là người thắng cuộc.
+
+Hỏi: cho trước $n$ và $k$, liệu có thể biết trước người thắng cuộc?
 
