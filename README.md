@@ -78,7 +78,7 @@ signed main(){
 	}
 	fill(f + 1, f + 1 + n, -1);
 	for(int i = 1; i <= n; i++)if(deg[i] == 0)f[i] = 0;
-	for(int i = 1; i <= n; i++)if(f[i] == 1)dfs(i);
+	for(int i = 1; i <= n; i++)if(f[i] == -1)dfs(i);
 	cout  <<  accumulate(f + 1, f + 1 + n, 0);
 }
 ```
