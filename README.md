@@ -90,7 +90,7 @@ Cả 2 dạng đều có chung đặc điểm: mọi trạng thái thua của m�
 ### A. Toán bất biến
 
 #### Bài toán mở đầu
-Ngọc Minh và Thuận Hiếu, người Hải Ngôn, là một đôi bạn thân. Một hôm, đang đi daọ, họ "tình cờ" tìm được 1 cái ví, có $n$ đồng xu giống hệt nhau. 2 người quyết định chơi 1 trò chơi như sau:
+Ngọc Minh và Thuận Hiếu, quê Hải Ngôn, là một đôi bạn thân. Một hôm, đang đi daọ, họ "tình cờ" tìm được 1 cái ví, có $n$ đồng xu giống hệt nhau. 2 người quyết định chơi 1 trò chơi như sau:
 - Trò chơi diễn ra luân phiên theo luật, bắt đầu từ Ngọc Minh.
 - Mỗi lượt, người chơi sẽ bốc một nắm xu ra. Vì luyện tập cơ ngón tay, nên cả 2 đều có thể bốc lên tới $k$ viên sỏi.
 - Ai bốc hết xu được trước là người thắng cuộc.
