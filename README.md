@@ -101,13 +101,14 @@ Ngọc Minh và Thuận Hiếu, quê Hải Ngôn, là một đôi bạn thân. M
 
 Hỏi: cho trước $n$ và $k$, liệu có thể biết trước người thắng cuộc?
 
-**Một cách làm:** sử dụng quy hoạch động trò chơi để tính $f(n)$. Công thức tổng quát như sau:
+**Một cách làm:** sử dụng quy hoạch động trò chơi để tính $f(n)$ ($1$ nếu Ngọc Minh thắng và $0$ nếu ngược lại). Công thức tổng quát như sau:
 - $f(0) = 0$
-- $f(n) = [f(n - 1) \land f(n - 2) \land ... f(n - max(n, k))] \oplus 1$
+- $f(n) = [f(n - 1) \land f(n - 2) \land ... f(n - min(n, k))] \oplus 1$
 <details>
-<summary>Khởi tạo</summary>
+<summary>Code mẫu</summary>
 	
 ```cpp
+cin >> n >> k;
 int f[n + 1];
 f[0] = 0;
 for(int i = 1; i <= n; i++){
@@ -115,7 +116,25 @@ for(int i = 1; i <= n; i++){
 	for(int j = 1; j <= i, j <= k; j++)f[i] &= f[j];
 	f[i] ^= 1;
 }
-cout << f[n];
+```
+ 
+</details>
+
+Cách làm này có độ phức tạp là $O(nk)$, nhưng có thể tối ưu xuống $O(n)$ bằng cách tính trước $x = [f(n - 1) \land f(n - 2) \land ... f(n - max(n, k))]$. Nhận thấy $x = 1 \Longleftrightarrow f(n - 1) + f(n - 2) + ... + f(n - min(n, k)) = min(n - 1, k)$. Vậy ta có thể sử dụng biến $cur$ để kiểm soát tổng cộng dồn và tính cho $f(n)$.
+<details>
+<summary>Code mẫu</summary>
+	
+```cpp
+cin >> n >> k;
+int f[n + 1], sum = 0;
+f[0] = 0;
+for(int i = 1; i <= n; i++){
+	int ok = 0;
+	if(sum == min(n - 1, k))ok = 1;
+	f[i] = ok^1;
+	sum += f[i];
+	if(i >= k)sum -= f[i - k];
+}
 ```
  
 </details>
