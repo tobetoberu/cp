@@ -42,15 +42,16 @@ Có thể thấy $1, 3$ là đỉnh thua do là đỉnh lá, $2, 4$ là đỉnh 
 #### Cách giải:
 Gọi $f(u)$ là trạng thái của đỉnh $u$. $f(u) = 1$ là đỉnh $u$ thắng, $f(u) = 0$ là đỉnh $u$ thua. Ta tính hàm $f(u)$ như sau:
 - $f(leaf) = 0$ với mọi đỉnh $leaf$ lá.
-- $f(u)  = min[f(v_1), f(v_2), ..., f(v_k)] \oplus 1$ với mọi $(u \rightarrow v_1), (u \rightarrow v_2), ..., (u \rightarrow v_k)$.  Nói cách khác, $f(u) = 0$ khi và chỉ khi mọi $v$ sao cho $(u \rightarrow v)$ thỏa mãn $f(v) = 1$.
+- $f(u) = [f(v_1) \land f(v_2) \land ... \land f(v_k)] \oplus 1$ với mọi $(u \rightarrow v_1), (u \rightarrow v_2), ..., (u \rightarrow v_k)$.  Nói cách khác, $f(u) = 0$ khi và chỉ khi mọi $v$ sao cho $(u \rightarrow v)$ thỏa mãn $f(v) = 1$.
 
 Vậy, ta có cách giải như sau:
 - Khởi tạo mảng $f[u]$, ban đầu có giá trị $-1$. 
 - Tìm các đỉnh $leaf$ lá và đặt $f[leaf] = 0$.
 - Với mỗi đỉnh $u$ còn lại, ta thực hiện DFS tới các đỉnh xung quanh và tính $f[u]$ bằng công thức trên.
 - Kết quả là số đỉnh $u$ thỏa mãn $f[u] = 1$.
-
-Code mẫu:
+<details>
+<summary>Code mẫu</summary>
+	
 ```cpp
 //author: toberu
 #include<bits/stdc++.h>
@@ -65,7 +66,7 @@ void dfs(int u){
 	f[u] = 1;
 	for(int v : g[u]){
 		if(f[v] == -1)dfs(v);
-		f[u] = min(f[u], f[v]);
+		f[u] &= f[v];
 	}
 	f[u] ^= 1;
 }
@@ -82,6 +83,9 @@ signed main(){
 	cout << accumulate(f + 1, f + 1 + n, 0);
 }
 ```
+
+</details>
+		
 *Đây là một bài thuộc loại quy hoạch động trò chơi điển hình.*
 
 ## Lý thuyết trò chơi: Toán bất biến và trò chơi Nim
@@ -97,3 +101,21 @@ Ngọc Minh và Thuận Hiếu, quê Hải Ngôn, là một đôi bạn thân. M
 
 Hỏi: cho trước $n$ và $k$, liệu có thể biết trước người thắng cuộc?
 
+**Một cách làm:** sử dụng quy hoạch động trò chơi để tính $f(n)$. Công thức tổng quát như sau:
+- $f(0) = 0$
+- $f(n) = [f(n - 1) \land f(n - 2) \land ... f(n - max(n, k))] \oplus 1$
+<details>
+<summary>Khởi tạo</summary>
+	
+```cpp
+int f[n + 1];
+f[0] = 0;
+for(int i = 1; i <= n; i++){
+	f[i] = 1;
+	for(int j = 1; j <= i, j <= k; j++)f[i] &= f[j];
+	f[i] ^= 1;
+}
+cout << f[n];
+```
+ 
+</details>
