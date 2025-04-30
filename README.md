@@ -83,3 +83,6 @@ signed main(){
 }
 ```
 *Đây là một bài thuộc loại quy hoạch động trò chơi điển hình.*
+
+## Lý thuyết trò chơi: Toán bất biến và trò chơi Nim
+Cả 2 dạng đều có chung đặc điểm rằng: mọi trạng thái thua đều có chung một tính chất toán học.
