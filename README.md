@@ -141,3 +141,10 @@ for(int i = 1; i <= n; i++){
 
 Tuy nhiên, ta vẫn có thể cải tiến hơn nữa.
 Từ nhận xét $f(0) = 0$, $f(1) = f(2) = ... = f(k) = 1$, $f(k + 1) = 0$, $f(k + 2) = f(k + 3) = ... = f(2k + 1) = 1$, ... Có thể nhận thấy $f(n) = 0$ khi và chỉ khi $n$ chia hết cho $(k + 1)$. Vậy ta có thể xác định người thắng trong $O(1)$.
+
+#### Nhận xét
+Với những bài toán về lý thuyết trò chơi liên quan đến số học, hãy tìm một trạng thái chung mà:
+- Có chung tính chất với trạng thái thua cơ bản, và
+- Chỉ có thể trực tiếp đi đến các trạng thái còn lại (Không thể trực tiếp đi đến trạng thái khác cùng tính chất đó).
+
+Trong bài toán ví dụ trên, trạng thái chung là $n_t$ $mod$ $(k + 1) = 0$, vì không tồn tại $n_x$, $n_y$ thỏa mãn $|n_x - n_y| \leq k$, hay $n_x \rightarrow n_y$ hoặc $n_x \leftarrow n_y$.
