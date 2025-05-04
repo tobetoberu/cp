@@ -9,7 +9,7 @@ Cho 1 đồ thị không chu trình có hướng, không trọng số, gồm $n$
 
 Bá Phúc và Đức Mạnh quyết định chơi một trò chơi trên đồ thị này (sau khi bị thu máy). Cụ thể, trò chơi như sau: 
 - Đầu tiên, một đồng xu được đặt trên 1 đỉnh bất kì của đồ thị. 
-- Tiếp theo, trò chơi diễn ra luân phiên từng người một: Bá Phúc đi trước, Đức Mạnh đi sau.
+- Tiếp theo, trò chơi diễn ra luân phiên từng người một: Phúc đi trước, Đức Mạnh đi sau.
 -  Đến lượt mình, mỗi người chơi chọn một đỉnh mà đỉnh chứa đồng xu ở lượt này có cạnh nối tới, sau đó, dịch đồng xu tới đỉnh đó. Nói cách khác, người chơi có thể di chuyển đồng xu từ đỉnh $u$ tới đỉnh $v$ khi và chỉ khi $u$ có cạnh nối tới $v$ ($u  \rightarrow v$).
 - Người đầu tiên không thể di chuyển đồng xu ở lượt cùa mình sẽ thua cuộc.
 
@@ -94,14 +94,14 @@ Cả 2 dạng đều có chung đặc điểm: mọi trạng thái thua của m�
 ### A. Toán bất biến
 
 #### Bài toán mở đầu
-Ngọc Minh và Thuận Hiếu, quê Hải Ngôn, là một đôi bạn thân. Một hôm, đang đi daọ, họ "tình cờ" tìm được 1 cái ví, có $n$ đồng xu giống hệt nhau. 2 người quyết định chơi 1 trò chơi như sau:
+Minh và Hiếu, quê Hải Ngôn, là một đôi bạn thân. Một hôm, đang đi daọ, họ "tình cờ" tìm được 1 cái ví, có $n$ đồng xu giống hệt nhau. 2 người quyết định chơi 1 trò chơi như sau:
 - Trò chơi diễn ra luân phiên theo luật, bắt đầu từ Ngọc Minh.
 - Mỗi lượt, người chơi sẽ bốc một nắm xu ra. Vì luyện tập cơ ngón tay, nên cả 2 đều có thể bốc lên tới $k$ viên sỏi.
 - Ai bốc hết xu được trước là người thắng cuộc.
 
 Hỏi: cho trước $n$ và $k$, liệu có thể biết trước người thắng cuộc?
 
-**Một cách làm:** sử dụng quy hoạch động trò chơi để tính $f(n)$ ($1$ nếu Ngọc Minh thắng và $0$ nếu ngược lại). Công thức tổng quát như sau:
+**Một cách làm:** sử dụng quy hoạch động trò chơi để tính $f(n)$ ($1$ nếu Minh thắng và $0$ nếu ngược lại). Công thức tổng quát như sau:
 - $f(0) = 0$
 - $f(n) = [f(n - 1) \land f(n - 2) \land ... f(n - min(n, k))] \oplus 1$
 <details>
@@ -147,4 +147,7 @@ Với những bài toán về lý thuyết trò chơi liên quan đến số h�
 - Có chung tính chất với trạng thái thua cơ bản, và
 - Chỉ có thể trực tiếp đi đến các trạng thái còn lại (Không thể trực tiếp đi đến trạng thái khác cùng tính chất đó).
 
-Trong bài toán ví dụ trên, trạng thái chung là $n_t$ $mod$ $(k + 1) = 0$, vì không tồn tại $n_x$, $n_y$ thỏa mãn $|n_x - n_y| \leq k$, hay $n_x \rightarrow n_y$ hoặc $n_x \leftarrow n_y$.
+Trong bài toán ví dụ trên, trạng thái chung là $n_t$ $mod$ $(k + 1) = 0$, vì không tồn tại $n_x, n_y$ thỏa mãn $n_x \rightarrow n_y$ hoặc $n_x \leftarrow n_y$ với $x \neq y$.
+
+### B. Bài toán Nim
+Nội dung bài toán: Cho $n$ đống sỏi, ban đầu mỗi đổng sỏi có $A_i$ viên sỏi ($1 \leq i \leq n$). Có 2 người chơi bốc sỏi theo lượt, mỗi lượt một người được bốc $k$ viên sỏi từ đống sỏi $i$ ($1 \leq k \leq A_i$) nếu $(k, A_i)$ thỏa mãn điều kiện $C$. 
